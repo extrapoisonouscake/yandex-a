@@ -1,18 +1,17 @@
 .bookshelf {
-	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: center;
+	height:fit-content;
 }
 .genre:hover {
 	border-bottom: 1px solid black;
 }
 
 .choice_genre {
-	margin: 50px 20px 55px 40px; 
 	width: max-content; 
-	height: 660px;
+	height: fit-content;
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
@@ -23,3 +22,16 @@
 	cursor: pointer;
 }
 
+.genre_bold{
+	font-weight:400;
+}
+
+
+.bookshelf_container{
+	width:100%;
+	max-width:900px;
+	margin:50px auto 0;
+	display:flex;
+	justify-content:center;
+	gap:20px;
+}

@@ -1,5 +1,5 @@
 .book_card {
-	width: 55vw;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -7,7 +7,6 @@
 	padding: 16px 20px 20px;
 	background: #FFFFFF;
 	border-radius: 8px;
-	margin: 50px 40px 10px 20px;
 }
 
 .book_card:hover {

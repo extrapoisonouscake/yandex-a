@@ -1,17 +1,13 @@
 /*тут отображение содержимого одного отзыва*/
 import styles from './Review.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectReviewById } from '../../store/review/selectors.js';
+import { selectReviewById } from '../../store/reviews/selectors.js';
 
-export const Review = ({reviewId}) => {
-	const dispatch = useDispatch()
-	const review = useSelector(state => selectReviewById(state, reviewId));
-	if (!review) {
-		return null;
-	}
+export const Review = ({user,text,rating}) => {
+	// const dispatch = useDispatch()
 
 	return <div className="review_card">
-		<p className="review_title">{review.user.name} <span>Оценка: {review.rating}</span></p> 
-		<p>{review.text}</p>
+		<p className="review_title">{user.name} <span>Оценка: {rating}</span></p> 
+		<p>{text}</p>
 	</div>
 }

@@ -1,42 +1,36 @@
-import { Review } from '../../components/Review/Review.jsx';
-import { useState } from 'react';
-import styles from './ReviewsPage.css';
-import { Book } from '../../components/Book/Book.jsx';
-import { useSelector } from 'react-redux';
-import { selectReview } from '../../store/review/selectors.js';
-import { Bookshelf } from '../../components/Bookshelf/Bookshelf.jsx';
-import { NavLink, Outlet, isActive  } from 'react-router-dom';
-
+import { Review } from "../../components/Review/Review.jsx";
+import { useState } from "react";
+import styles from "./ReviewsPage.css";
+import { Book } from "../../components/Book/Book.jsx";
+import { useSelector } from "react-redux";
+import { selectReviewsByBookId } from "../../store/reviews/selectors.js";
+import { Bookshelf } from "../../components/Bookshelf/Bookshelf.jsx";
+import { NavLink, Outlet, isActive, useParams } from "react-router-dom";
 
 export const ReviewsPage = () => {
+  const { id: bookId } = useParams();
 
+  // let activeBookshelf = props.bookshelf[0];
+  // const [count, setCount] = useState(0);
+  const reviews = useSelector((state) => selectReviewsByBookId(state,bookId));
 
+  return (
+    <div className="page__reviews">
+      <span>
+        {reviews.map((review) => (
+          
+            <Review {...review} />
+        ))}
+      </span>
+      {/*отображение маленькой карточки*/}
 
-	 // let activeBookshelf = props.bookshelf[0];
-	 // const [count, setCount] = useState(0); 
-	const reviews = useSelector((state) => selectReview(state));
-
-
-
-	return <div className="page__reviews">
-			<span>
-				{
-					reviews.map((review) => <NavLink to={review.id} key={review.id} className={({ isActive }) => 
-                      (isActive ? "lactive-class" : "not-active-class")}><Review review={review}/></NavLink>)
-				}
-			</span>
-		{/*отображение маленькой карточки*/}
-
-<section className="container">
-
-{/*??????на месте этого должен быть Outlet??????
+      <section className="container">
+        {/*??????на месте этого должен быть Outlet??????
 	<div><Bookshelf bookshelf={activeBookshelf}/></div>*/}
 
-<div className="book_card1 small">
-	<Outlet />
-	</div>
+        <div className="book_card1 small"></div>
 
-			{/*<div className="book_card1 small">
+        {/*<div className="book_card1 small">
 				<div>
 					<p className="book_title">{props.bookshelf[0].books[0].name}</p>
 					<p className="book_text">{props.bookshelf[0].books[0].autors}</p>
@@ -51,13 +45,13 @@ export const ReviewsPage = () => {
 		</span>
 			</div>*/}
 
-
-		{/*отображение маленькой карточки-аннотации*/}
-			<div className="book_card1 small">
-				{/*<div>
+        {/*отображение маленькой карточки-аннотации*/}
+        <div className="book_card1 small">
+          {/*<div>
 					<p className="book_text black"><span className="ann__title">Аннотация</span>{props.bookshelf[0].books[0].annotation}</p>
 				</div>*/}
-			</div>
-</section>
-	</div>
-}
+        </div>
+      </section>
+    </div>
+  );
+};

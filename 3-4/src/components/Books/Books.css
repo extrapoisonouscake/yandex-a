@@ -1,5 +1,6 @@
 .books {
 	display: flex;
 	flex-direction: column;
-	width: 60vw;
+	flex-grow:1;
+	gap:40px;
 }
