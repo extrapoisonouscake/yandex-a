@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {Statuses} from '../../constants/statuses.js';
 import mock from '../../constants/mock.json';
+import {v4 as uuidv4} from 'uuid'
 
 const initialState =  {
 		entities: mock.books,
-		ids: [],
+		ids: mock.books.map(() => uuidv4()),
 		status: Statuses.success,
 	};
 

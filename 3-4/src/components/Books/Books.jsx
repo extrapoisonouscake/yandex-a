@@ -4,23 +4,12 @@ import { Book } from "../Book/Book.jsx";
 import styles from "./Books.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectBooks,
-  selectIsBooksLoading,
-} from "../../store/book/selectors.js";
-import { selectBookshelfsBooks } from "../../store/cinema/selectors";
+import { selectBooksByGenre } from "../../store/book/selectors";
 
-export const Books = ({ bookshelfId }) => {
+export const Books = ({ genre }) => {
   // const books = useSelector(state => selectBooks(state));
-  const books = useSelector((state) =>
-    selectBookshelfsBooks(state, bookshelfId)
-  );
-  const isLoading = useSelector((state) => selectIsBooksLoading(state));
-
-  if (isLoading) {
-    return <p>Подождите, список товаров загружается</p>;
-  }
-
+  const books = useSelector((state) => selectBooksByGenre(state, genre));
+  console.log(books)
   if (!books) {
     return null;
   }
@@ -28,7 +17,7 @@ export const Books = ({ bookshelfId }) => {
   return (
     <div className="books">
       {books.map((book) => (
-        <span key={book}>
+        <span key={book.id}>
           <Book {...book} />
         </span>
       ))}

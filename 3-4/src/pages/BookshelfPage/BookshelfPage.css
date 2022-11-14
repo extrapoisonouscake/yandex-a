@@ -18,12 +18,12 @@
 	align-items: flex-start;
 	padding: 20px;
 	border-radius: 8px;
-	font-weight: 600;
+	font-weight: 400;
 	cursor: pointer;
 }
 
 .genre_bold{
-	font-weight:400;
+	font-weight:600;
 }
 
 

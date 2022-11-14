@@ -19,6 +19,7 @@ export function App() {
             <Route path="/" element={<BookshelfPage />} />
 
             <Route path="/reviews/:id" element={<ReviewsPage />} />
+            <Route path="/cart" element={<CartPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>
